@@ -3,7 +3,7 @@
     --au-black: #000000;
     --au-orange: #FF8C00; /* A vibrant orange based on the logo */
     --au-grey: #939598;
-    --cyber-blue: #FF8C00; /* Deep Sky Blue - a common 00BFFF"cyber" blue */
+    --cyber-blue: #FF8C00; /* Deep Sky Blu00BFFFe - a common "cyber" blue */
     --hacking-green: #00FF00; /* Bright neon green for the lines */
     
     --background-dark: #121212;
@@ -302,7 +302,7 @@ h1, h2, h3 {
 .event-card {
     background: var(--background-light-dark);
     border: 1px solid var(--tertiary-accent);
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
     max-width: 500px;
@@ -311,6 +311,7 @@ h1, h2, h3 {
     position: relative;
     overflow: hidden;
     flex-grow: 1;
+    
 }
 
 .event-card::before {
@@ -411,87 +412,6 @@ h1, h2, h3 {
     margin-top: auto;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .main-header {
-        flex-direction: column;
-        text-align: center;
-        padding-bottom: 0.5rem;
-    }
-    .main-header .logo {
-        margin-bottom: 1rem;
-        margin-left: 0;
-    }
-    .main-header .logo img {
-        margin-left: 0;
-    }
-    .main-header nav {
-        width: 100%;
-    }
-    .main-header nav ul {
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-        align-items: center;
-        margin-bottom: 1rem;
-    }
-    .main-header nav ul li {
-        margin-right: 0;
-        width: 80%;
-    }
-    .main-header nav ul li a {
-        display: block;
-        text-align: center;
-        padding: 10px;
-        border: 1px solid var(--au-grey);
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
-    }
-    .main-header nav ul li a:hover {
-        animation: none;
-        transform: none;
-    }
-    .hero-content {
-        text-align: center;
-    }
-    .typing-effect {
-        font-size: clamp(1.5rem, 8vw, 2.5rem);
-        letter-spacing: 2px;
-        white-space: normal;
-        border-right: none;
-        animation: none;
-        width: 100%;
-    }
-    #hero {
-        padding: 100px 20px;
-    }
-    .section-title {
-        font-size: 2rem;
-    }
-    .member-grid, .event-grid {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-    .event-card, .member-profile {
-        width: 90%;
-        max-width: 400px;
-    }
-    .member-profile {
-        width: 250px;
-    }
-    .contact-links {
-        flex-direction: column;
-        align-items: center;
-    }
-    .contact-link {
-        width: 90%;
-        max-width: 300px;
-    }
-}
-
-/* Add to your existing CSS file */
-
 /* Hamburger menu toggle */
 .menu-toggle {
     display: none; /* Hidden by default */
@@ -553,14 +473,21 @@ h1, h2, h3 {
     top: 0;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
     .main-header {
-        flex-direction: row; /* Keep logo and menu on one line */
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
         padding: 1rem 20px;
     }
-    
+    .main-header .logo {
+        margin-bottom: 0;
+        margin-left: 0;
+    }
+    .main-header .logo img {
+        margin-left: 0;
+    }
     .main-header nav {
         position: fixed;
         top: 0;
@@ -570,7 +497,6 @@ h1, h2, h3 {
         height: 100vh;
         background: var(--background-dark);
         padding-top: 80px;
-        padding-right: 40px;
         transform: translateX(100%);
         transition: transform 0.3s ease-in-out;
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
@@ -582,18 +508,63 @@ h1, h2, h3 {
     
     .main-header nav ul {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         padding: 20px;
         width: 100%;
+        margin: 0 auto;
     }
     
     .main-header nav ul li {
         width: 100%;
+        margin-right: 0;
         margin-bottom: 20px;
     }
 
     /* Show the hamburger button on mobile */
     .menu-toggle {
         display: block;
+    }
+
+    /* Correcting the hero and content sections on mobile */
+    .typing-effect {
+        font-size: clamp(1.5rem, 8vw, 2.5rem);
+        letter-spacing: 2px;
+        white-space: normal;
+        border-right: none;
+        animation: none;
+    }
+
+    #hero {
+        padding: 100px 20px;
+        text-align: center;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .event-grid, .member-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .event-card, .member-profile {
+        width: 90%;
+        max-width: 400px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .contact-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .contact-link {
+        width: 90%;
+        max-width: 300px;
+        text-align: center;
+        margin: 0 auto;
     }
 }
