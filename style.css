@@ -489,3 +489,111 @@ h1, h2, h3 {
         max-width: 300px;
     }
 }
+
+/* Add to your existing CSS file */
+
+/* Hamburger menu toggle */
+.menu-toggle {
+    display: none; /* Hidden by default */
+    background: transparent;
+    border: 2px solid var(--au-orange);
+    color: var(--au-orange);
+    padding: 15px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    position: absolute; /* Position it on the side */
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 5px;
+    z-index: 1100; /* Ensure it's on top of other elements */
+}
+
+/* Hamburger icon styling */
+.hamburger-icon {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--au-orange);
+    position: relative;
+    transition: background 0.3s ease-in-out;
+}
+
+.hamburger-icon::before,
+.hamburger-icon::after {
+    content: '';
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--au-orange);
+    position: absolute;
+    transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+}
+
+.hamburger-icon::before {
+    top: -8px;
+}
+
+.hamburger-icon::after {
+    top: 8px;
+}
+
+/* Animation for the 'X' icon */
+.menu-toggle[aria-expanded="true"] .hamburger-icon {
+    background: transparent;
+}
+
+.menu-toggle[aria-expanded="true"] .hamburger-icon::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.menu-toggle[aria-expanded="true"] .hamburger-icon::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: row; /* Keep logo and menu on one line */
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 20px;
+    }
+    
+    .main-header nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70%;
+        max-width: 300px;
+        height: 100vh;
+        background: var(--background-dark);
+        padding-top: 80px;
+        padding-right: 40px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .main-header nav[aria-expanded="true"] {
+        transform: translateX(0);
+    }
+    
+    .main-header nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        width: 100%;
+    }
+    
+    .main-header nav ul li {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Show the hamburger button on mobile */
+    .menu-toggle {
+        display: block;
+    }
+}

@@ -23,3 +23,22 @@ document.addEventListener('DOMContentLoaded', () => {
         container.appendChild(line);
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+
+    menuToggle.addEventListener('click', () => {
+        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', !isExpanded);
+        mainNav.setAttribute('aria-expanded', !isExpanded);
+    });
+
+    // Close the menu when a link is clicked (optional but recommended)
+    mainNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.setAttribute('aria-expanded', 'false');
+            mainNav.setAttribute('aria-expanded', 'false');
+        });
+    });
+});
