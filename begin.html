@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Raven Signal Calibration</title>
+    <style>
+        body {
+            background: #0b0f1a;
+            color: #eaeaea;
+            text-align: center;
+        }
+
+        .logo {
+            max-width: 180px;
+        }
+
+        .msg {
+            font-size: 1.2rem;
+        }
+
+        .bar-wrapper {
+            width: 80%;
+            max-width: 500px;
+            background: #222;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 1.5rem auto;
+            box-shadow: 0 0 12px rgba(255, 165, 0, .4);
+        }
+
+        .bar {
+            height: 28px;
+            background: linear-gradient(90deg, #ff6600, #ff9900);
+            /* will be set via JS */
+            width: 0%;
+            transition: width .8s ease-out;
+        }
+
+        .perc {
+            margin-top: .5rem;
+            font-weight: bold;
+            color: #ffcc66;
+        }
+
+        a.discord {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: .8rem 1.4rem;
+            background: #5865F2;
+            color: #fff;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+    <img src="Logo.png" alt="AU CyberTeam Raven" class="logo">
+
+    <h1>Raven Signal Calibration</h1>
+    <div class="msg">Our sensor is locking onto a faint transmission…<br>Stay tuned while we boost the signal.</div>
+
+    <div class="bar-wrapper">
+        <div class="bar" id="prog"></div>
+    </div>
+    <div class="perc" id="pct">0%</div>
+
+    <a href="https://discord.gg/QPBFruHjqY" class="discord">Join the Discord</a>
+
+    <script>
+        const bar = document.getElementById('prog');
+        const txt = document.getElementById('pct');
+
+        const startTimestamp = Date.UTC(2025, 8, 8, 0, 0);
+        const endTimestamp = Date.UTC(2025, 8, 17, 22, 0);
+        const totalDuration = endTimestamp - startTimestamp;
+
+        function updateProgress() {
+            const currentTimestamp = Date.now();
+            const elapsedDuration = currentTimestamp - startTimestamp;
+            let percentage;
+            if (currentTimestamp <= startTimestamp) {
+                percentage = 0;
+            } else if (currentTimestamp >= endTimestamp) {
+                percentage = 100;
+            } else {
+                percentage = (elapsedDuration / totalDuration) * 100;
+            }
+            percentage = percentage.toFixed(2);
+            bar.style.width = percentage + '%';
+            txt.textContent = percentage + '%';
+        }
+
+        window.addEventListener('load', () => {
+            updateProgress();
+            setInterval(updateProgress, 1000); // Update every second
+        });
+    </script>
+
+</body>
+
+</html>
